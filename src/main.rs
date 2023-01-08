@@ -55,8 +55,8 @@ fn main() {
                 "GESTURE_SWIPE_UPDATE" => {
                     let x: f32 = parts[4].parse().unwrap();
                     let y: f32 = parts[5].parse().unwrap();
-                    xsum += x * acceleration;
-                    ysum += y * acceleration;
+                    xsum += x * acceleration * 8.0;
+                    ysum += y * acceleration * 5.0;
                     if xsum.abs() > 1.0 || ysum.abs() > 1.0 {
                         xdo_handler.move_mouse_relative(xsum as i32, ysum as i32);
                         xsum = 0.0;

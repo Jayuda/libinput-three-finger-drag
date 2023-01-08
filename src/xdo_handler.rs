@@ -66,12 +66,6 @@ impl XDoHandler {
         }
     }
 
-    pub fn mouse_up_force(&mut self, button: i32) {
-        self.cancel_timer_if_present();
-        self.tx.send((XDoCommand::MouseUp, button, 255)).unwrap();
-        self.handler_mouse_down = false;
-    }
-
     pub fn mouse_up_delay(&mut self, button: i32, delay_ms: i64) {
         let tx_clone = self.tx.clone();
         self.guard = Some(self.timer.schedule_with_delay(Duration::milliseconds(delay_ms), move || {
